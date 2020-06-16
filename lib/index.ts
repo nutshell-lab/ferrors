@@ -12,12 +12,12 @@ export const throwError = (name: string, msg: string, extraInfo: any): never => 
   throw new FError(name, msg, extraInfo)
 }
 
-export const reThrow = (e: FError) => throwError(e.name, e.message, e.extraInfo)
+export const reThrow = (name: string) => (e: Error) => throwError(name, e.message, e)
 
 export const on = (pattern: string, fn: Function) => (event: FError) =>
   event.name === pattern
     ? fn(event.extraInfo)
-    : reThrow(event)
+    : reThrow(event.name)(event)
 
 export default {
   throwError,

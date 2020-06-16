@@ -27,11 +27,11 @@ var FError = (function (_super) {
 exports.throwError = function (name, msg, extraInfo) {
     throw new FError(name, msg, extraInfo);
 };
-exports.reThrow = function (e) { return exports.throwError(e.name, e.message, e.extraInfo); };
+exports.reThrow = function (name) { return function (e) { return exports.throwError(name, e.message, e); }; };
 exports.on = function (pattern, fn) { return function (event) {
     return event.name === pattern
         ? fn(event.extraInfo)
-        : exports.reThrow(event);
+        : exports.reThrow(event.name)(event);
 }; };
 exports["default"] = {
     throwError: exports.throwError,
