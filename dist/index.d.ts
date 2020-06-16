@@ -1,12 +1,12 @@
 declare class FError extends Error {
     readonly extraInfo: any;
-    constructor(name: string, msg: string, extraInfo: any);
+    constructor(name: string, msg: string, extraInfo?: any);
 }
-export declare const throwError: (name: string, msg: string, extraInfo: any) => never;
+export declare const throwError: (name: string, msg: string, extraInfo?: any) => never;
 export declare const reThrow: (name: string) => (e: Error) => never;
 export declare const on: (pattern: string, fn: Function) => (event: FError) => any;
 declare const _default: {
-    throwError: (name: string, msg: string, extraInfo: any) => never;
+    throwError: (name: string, msg: string, extraInfo?: any) => never;
     reThrow: (name: string) => (e: Error) => never;
     on: (pattern: string, fn: Function) => (event: FError) => any;
 };

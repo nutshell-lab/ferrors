@@ -1,14 +1,14 @@
 class FError extends Error {
   readonly extraInfo: any
 
-  constructor(name: string, msg: string, extraInfo: any) {
+  constructor(name: string, msg: string, extraInfo: any = {}) {
     super(msg)
     this.name = name
     this.extraInfo = extraInfo
   }
 }
 
-export const throwError = (name: string, msg: string, extraInfo: any): never => {
+export const throwError = (name: string, msg: string, extraInfo?: any): never => {
   throw new FError(name, msg, extraInfo)
 }
 

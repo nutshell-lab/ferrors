@@ -17,6 +17,7 @@ exports.on = exports.reThrow = exports.throwError = void 0;
 var FError = (function (_super) {
     __extends(FError, _super);
     function FError(name, msg, extraInfo) {
+        if (extraInfo === void 0) { extraInfo = {}; }
         var _this = _super.call(this, msg) || this;
         _this.name = name;
         _this.extraInfo = extraInfo;
