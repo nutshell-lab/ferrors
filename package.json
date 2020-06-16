@@ -2,7 +2,7 @@
   "name": "@nutshelllab/ferrors",
   "version": "0.0.1-1",
   "description": "Functional error for ease of use in fp pipelines",
-  "main": "index.js",
+  "main": "dist/index.js",
   "git": "git@github.com:nutshell-lab/ferrors.git",
   "directories": {
     "lib": "lib"
