@@ -13,31 +13,29 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 exports.__esModule = true;
-exports.FError = void 0;
-var FError;
-(function (FError_1) {
-    var FError = (function (_super) {
-        __extends(FError, _super);
-        function FError(name, msg, extraInfo) {
-            var _this = _super.call(this, msg) || this;
-            _this.name = name;
-            _this.extraInfo = extraInfo;
-            return _this;
-        }
-        return FError;
-    }(Error));
-    function throwError(name, msg, extraInfo) {
-        throw new FError(name, msg, extraInfo);
+exports.on = exports.reThrow = exports.throwError = void 0;
+var FError = (function (_super) {
+    __extends(FError, _super);
+    function FError(name, msg, extraInfo) {
+        var _this = _super.call(this, msg) || this;
+        _this.name = name;
+        _this.extraInfo = extraInfo;
+        return _this;
     }
-    function reThrow(e) {
-        return throwError(e.name, e.message, e.extraInfo);
-    }
-    function on(pattern, fn) {
-        return function (event) {
-            return event.name === pattern
-                ? fn(event.extraInfo)
-                : reThrow(event);
-        };
-    }
-})(FError = exports.FError || (exports.FError = {}));
+    return FError;
+}(Error));
+exports.throwError = function (name, msg, extraInfo) {
+    throw new FError(name, msg, extraInfo);
+};
+exports.reThrow = function (e) { return exports.throwError(e.name, e.message, e.extraInfo); };
+exports.on = function (pattern, fn) { return function (event) {
+    return event.name === pattern
+        ? fn(event.extraInfo)
+        : exports.reThrow(event);
+}; };
+exports["default"] = {
+    throwError: exports.throwError,
+    reThrow: exports.reThrow,
+    on: exports.on
+};
 //# sourceMappingURL=index.js.map
