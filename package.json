@@ -1,0 +1,21 @@
+{
+  "name": "@nutshelllab/ferrors",
+  "version": "0.0.0",
+  "description": "Functional error for ease of use in fp pipelines",
+  "main": "index.js",
+  "git": "git@github.com:nutshell-lab/ferrors.git",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo 'no test :('"
+  },
+  "keywords": [
+    "error",
+    "functional",
+    "ferrors",
+    "nutshell"
+  ],
+  "author": "nutshell",
+  "license": "ISC"
+}
